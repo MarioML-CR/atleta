@@ -11,7 +11,7 @@ public class Telefono {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Atleta atleta;
+    private Atleta atleta_telefono;
 
     public Telefono() {
     }
@@ -33,10 +33,10 @@ public class Telefono {
     }
 
     public Atleta getAtleta() {
-        return atleta;
+        return atleta_telefono;
     }
 
     public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+        this.atleta_telefono = atleta;
     }
 }

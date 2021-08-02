@@ -11,10 +11,10 @@ public class Correo {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Atleta atleta;
+    private Atleta atleta_correo;
 
-    public Correo() {
-    }
+//    public Correo() {
+//    }
 
     public long getIdCorreo() {
         return idCorreo;
@@ -33,10 +33,10 @@ public class Correo {
     }
 
     public Atleta getAtleta() {
-        return atleta;
+        return atleta_correo;
     }
 
     public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+        this.atleta_correo = atleta;
     }
 }

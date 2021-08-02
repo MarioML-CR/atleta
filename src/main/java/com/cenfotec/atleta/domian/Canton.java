@@ -10,7 +10,7 @@ public class Canton {
     private long id;
     private String nombreCanton;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "canton")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cantones")
     private Set<Distrito> distritos;
 
     @ManyToOne

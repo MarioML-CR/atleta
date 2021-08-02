@@ -11,7 +11,7 @@ public class Deporte {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Atleta atleta;
+    private Atleta atleta_deporte;
 
     public Deporte() {
     }
@@ -37,11 +37,11 @@ public class Deporte {
     }
 
     public Atleta getAtleta() {
-        return atleta;
+        return atleta_deporte;
     }
 
     public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+        this.atleta_deporte = atleta;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Deporte {
         return "Deporte{" +
                 "idDeporte=" + idDeporte +
                 ", nombreDeporte='" + nombreDeporte + '\'' +
-                ", atleta=" + atleta +
+                ", atleta=" + atleta_deporte +
                 '}';
     }
 }

@@ -17,17 +17,18 @@ public class Atleta {
     private String telefono;
     private String correo;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_correo")
     private Set<Correo> correos;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_telefono")
-    private Set<Telefono> telefonos;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_deporte")
-    private Set<Deporte> deportes;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_provincia")
-    private Set<Provincia> provincias;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_telefono")
+//    private Set<Telefono> telefonos;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_deporte")
+//    private Set<Deporte> deportes;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_provincia")
+//    private Set<Provincia> provincias;
 
-    public Atleta() {
-    }
+//    public Atleta() {
+//    }
 
     public long getIdAtleta() {
         return idAtleta;
@@ -101,27 +102,27 @@ public class Atleta {
         this.correos = correos;
     }
 
-    public Set<Telefono> getTelefonos() {
-        return telefonos;
-    }
-
-    public void setTelefonos(Set<Telefono> telefonos) {
-        this.telefonos = telefonos;
-    }
-
-    public Set<Deporte> getDeportes() {
-        return deportes;
-    }
-
-    public void setDeportes(Set<Deporte> deportes) {
-        this.deportes = deportes;
-    }
-
-    public Set<Provincia> getProvincias() {
-        return provincias;
-    }
-
-    public void setProvincias(Set<Provincia> provincias) {
-        this.provincias = provincias;
-    }
+//    public Set<Telefono> getTelefonos() {
+//        return telefonos;
+//    }
+//
+//    public void setTelefonos(Set<Telefono> telefonos) {
+//        this.telefonos = telefonos;
+//    }
+//
+//    public Set<Deporte> getDeportes() {
+//        return deportes;
+//    }
+//
+//    public void setDeportes(Set<Deporte> deportes) {
+//        this.deportes = deportes;
+//    }
+//
+//    public Set<Provincia> getProvincias() {
+//        return provincias;
+//    }
+//
+//    public void setProvincias(Set<Provincia> provincias) {
+//        this.provincias = provincias;
+//    }
 }

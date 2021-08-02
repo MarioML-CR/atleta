@@ -9,13 +9,13 @@ public class Provincia {
     private long id;
     private String nombreProvincia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "provincia")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "provincias")
     private Set<Canton> cantones;
 
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Atleta atleta;
+    private Atleta atleta_provincia;
 
     public Provincia() {
     }
@@ -45,10 +45,10 @@ public class Provincia {
     }
 
     public Atleta getAtleta() {
-        return atleta;
+        return atleta_provincia;
     }
 
     public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+        this.atleta_provincia = atleta;
     }
 }
