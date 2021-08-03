@@ -52,11 +52,34 @@
                 </div>
                 <div>
                     <div>
-                        Cantidad de números de teléfonos: <span th:text="${atleta.telefonos.size()}">0</span>
+                        Cantidad de números de teléfonos:
+                        <span th:text="${atleta.telefonos.size()}">0</span>
                         <a th:href="@{/agregarTelefono/{id}(id = ${atleta.idAtleta})}">Agregar teléfono</a>
                     </div>
                     <div th:each="telefono: ${atleta.telefonos}">
                         <span th:text="${telefono.numero}" >teléfono</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Cantidad de cálculos del índice de masa muscular:
+                        <span th:text="${atleta.indicesMasaMuscular.size()}">0</span>
+                        <a th:href="@{/agregarIMC/{id}(id = ${atleta.idAtleta})}">Agregar IMC</a>
+                    </div>
+                    <div th:each="imc: ${atleta.indicesMasaMuscular}">
+                        <div>
+                            <span th:text="${imc.estatura}" >estatura</span>
+                        </div>
+                        <div>
+                            <span th:text="${imc.peso}" >peso</span>
+                        </div>
+                        <div>
+                            <span th:text="${imc.IMC}" >IMC</span>
+                        </div>
+                        <div>
+                            <span th:text="${imc.fechaCalculo}" >fecha</span>
+                        </div>
+
                     </div>
                 </div>
             </li>

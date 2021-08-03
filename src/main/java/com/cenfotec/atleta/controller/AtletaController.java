@@ -1,9 +1,11 @@
 package com.cenfotec.atleta.controller;
 import com.cenfotec.atleta.domian.Atleta;
 import com.cenfotec.atleta.domian.Correo;
+import com.cenfotec.atleta.domian.IndiceMasaMuscular;
 import com.cenfotec.atleta.domian.Telefono;
 import com.cenfotec.atleta.service.AtletaService;
 import com.cenfotec.atleta.service.CorreoService;
+import com.cenfotec.atleta.service.IndiceMasaMuscularService;
 import com.cenfotec.atleta.service.TelefonoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,9 @@ public class AtletaController {
 
     @Autowired
     TelefonoService telefonoService;
+
+    @Autowired
+    IndiceMasaMuscularService indiceMasaMuscularService;
 
     @RequestMapping({"/"})
     public String home(Model model) {
@@ -114,6 +119,29 @@ public class AtletaController {
         if(atleta.isPresent()) {
             telefono.setAtleta(atleta.get());
             telefonoService.saveTelefono(telefono);
+            return "index";
+        }
+        return "error";
+    }
+
+    @RequestMapping("/agregarIMC/{id}")
+    public String cargarAtletaParaIMC(Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        IndiceMasaMuscular indiceMasaMuscular = new IndiceMasaMuscular();
+        if (atleta.isPresent()){
+            model.addAttribute("nombreAtleta", atleta.get().getPrimerNombre());
+            model.addAttribute("idAtleta", atleta.get().getIdAtleta());
+            model.addAttribute("imc", indiceMasaMuscular);
+            return "agregarIMC";
+        }
+        return "noFound";
+    }
+    @RequestMapping(value = "/agregarIMC/{id}", method = RequestMethod.POST)
+    public String guardarIMC(IndiceMasaMuscular indiceMasaMuscular, Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        if(atleta.isPresent()) {
+            indiceMasaMuscular.setAtleta(atleta.get());
+            indiceMasaMuscularService.saveIMC(indiceMasaMuscular);
             return "index";
         }
         return "error";

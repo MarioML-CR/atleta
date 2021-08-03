@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar índice de masa muscular</title>
+</head>
+<body>
+  Registro del índice de masa muscular:
+  <span th:text="${nombreAtleta}" >IMC</span>
+  <form action="#" th:action="@{/agregarIMC/{id}(id=${idAtleta})}" th:object="${imc}"
+        method="post" />
+      <div>
+          <label for="altura">estara en cm</label>
+          <input type="text" th:field="*{imc.estatura}" id="altura">
+      </div>
+      <div>
+          <label for="pesoKg">peso ne KG</label>
+          <input type="text" th:field="*{imc.peso}" id="pesoKg">
+      </div>
+    <input type="submit" value="Agregar IMC">
+  </form>
+</body>
+</html>

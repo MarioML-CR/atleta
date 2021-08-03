@@ -20,6 +20,9 @@ public class Atleta {
     private Set<Correo> correos;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
     private Set<Telefono> telefonos;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
+    private Set<IndiceMasaMuscular> indicesMasaMuscular;
+
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_deporte")
 //    private Set<Deporte> deportes;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_provincia")
@@ -92,7 +95,15 @@ public class Atleta {
         this.telefonos = telefonos;
     }
 
-//    public Set<Deporte> getDeportes() {
+    public Set<IndiceMasaMuscular> getIndicesMasaMuscular() {
+        return indicesMasaMuscular;
+    }
+
+    public void setIndicesMasaMuscular(Set<IndiceMasaMuscular> indicesMasaMuscular) {
+        this.indicesMasaMuscular = indicesMasaMuscular;
+    }
+
+    //    public Set<Deporte> getDeportes() {
 //        return deportes;
 //    }
 //
