@@ -1,8 +1,10 @@
 package com.cenfotec.atleta.controller;
 import com.cenfotec.atleta.domian.Atleta;
 import com.cenfotec.atleta.domian.Correo;
+import com.cenfotec.atleta.domian.Telefono;
 import com.cenfotec.atleta.service.AtletaService;
 import com.cenfotec.atleta.service.CorreoService;
+import com.cenfotec.atleta.service.TelefonoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class AtletaController {
 
     @Autowired
     CorreoService correoService;
+
+    @Autowired
+    TelefonoService telefonoService;
 
     @RequestMapping({"/"})
     public String home(Model model) {
@@ -67,7 +72,7 @@ public class AtletaController {
 //        }
 //    }
     @RequestMapping("/agregarCorreo/{id}")
-    public String carrgarAtletaParaCorreo(Model model, @PathVariable long id) {
+    public String cargarAtletaParaCorreo(Model model, @PathVariable long id) {
         Optional<Atleta> atleta = atletaService.getAtletaById(id);
         Correo correo = new Correo();
         if (atleta.isPresent()) {
@@ -84,6 +89,31 @@ public class AtletaController {
         if (atleta.isPresent()) {
             correo.setAtleta(atleta.get());
             correoService.saveCorreo(correo);
+            return "index";
+        }
+        return "error";
+    }
+
+
+
+    @RequestMapping("/agregarTelefono/{id}")
+    public String cargarAtletaParaTelefono(Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        Telefono telefono = new Telefono();
+        if (atleta.isPresent()) {
+            model.addAttribute("nombreAtleta", atleta.get().getPrimerNombre());
+            model.addAttribute("idAtleta", atleta.get().getIdAtleta());
+            model.addAttribute("telefono", telefono);
+            return "agregarTelefono";
+        }
+        return "noFound";
+    }
+    @RequestMapping(value = "/agregarTelefono/{id}", method = RequestMethod.POST)
+    public String guardarTelefono(Telefono telefono, Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        if(atleta.isPresent()) {
+            telefono.setAtleta(atleta.get());
+            telefonoService.saveTelefono(telefono);
             return "index";
         }
         return "error";

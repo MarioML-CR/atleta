@@ -42,11 +42,22 @@
                     </div>
                 </div>
                 <div>
-                    Cantidad de direcciones de correo: <span th:text="${atleta.correos.size()}">0</span>
-                    <a th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>
+                    <div>
+                        Cantidad de direcciones de correo: <span th:text="${atleta.correos.size()}">0</span>
+                        <a th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>
+                    </div>
+                    <div th:each="correo: ${atleta.correos}">
+                        <span th:text="${correo.mail}" >correo</span>
+                    </div>
                 </div>
-                <div th:each="correo: ${atleta.correos}">
-                    <span th:text="${correo.mail}" >correo</span>
+                <div>
+                    <div>
+                        Cantidad de números de teléfonos: <span th:text="${atleta.telefonos.size()}">0</span>
+                        <a th:href="@{/agregarTelefono/{id}(id = ${atleta.idAtleta})}">Agregar teléfono</a>
+                    </div>
+                    <div th:each="telefono: ${atleta.telefonos}">
+                        <span th:text="${telefono.numero}" >teléfono</span>
+                    </div>
                 </div>
             </li>
         </div>

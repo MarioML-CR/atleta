@@ -18,8 +18,8 @@ public class Atleta {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
     private Set<Correo> correos;
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_telefono")
-//    private Set<Telefono> telefonos;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
+    private Set<Telefono> telefonos;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_deporte")
 //    private Set<Deporte> deportes;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_provincia")
@@ -84,14 +84,14 @@ public class Atleta {
         this.correos = correos;
     }
 
-//    public Set<Telefono> getTelefonos() {
-//        return telefonos;
-//    }
-//
-//    public void setTelefonos(Set<Telefono> telefonos) {
-//        this.telefonos = telefonos;
-//    }
-//
+    public Set<Telefono> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(Set<Telefono> telefonos) {
+        this.telefonos = telefonos;
+    }
+
 //    public Set<Deporte> getDeportes() {
 //        return deportes;
 //    }

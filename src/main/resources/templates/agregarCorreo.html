@@ -9,7 +9,7 @@
     <span th:text="${nombreAtleta}" >primer nombre</span>
     <form action="#" th:action="@{/agregarCorreo/{id}(id=${idAtleta})}" th:object="${correo}"
           method="post" />
-    <label for="email">Nombre</label>
+    <label for="email">correo</label>
     <input type="text" th:field="*{correo.mail}" id="email">
     <input type="submit" value="Agregar correo">
     </form>
