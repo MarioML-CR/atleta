@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar correo</title>
+</head>
+<body>
+    Registrar correo para el atleta:
+    <span th:text="${nombreAtleta}" >primer nombre</span>
+    <form action="#" th:action="@{/agregarCorreo/{id}(id=${idAtleta})}" th:object="${correo}"
+          method="post" />
+    <label for="email">Nombre</label>
+    <input type="text" th:field="*{correo.mail}" id="email">
+    <input type="submit" value="Agregar correo">
+    </form>
+</body>
+</html>

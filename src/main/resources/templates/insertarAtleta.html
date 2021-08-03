@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"></meta>
   <meta http-equiv="Content-Type" content="text/html"></meta>
   <title>Atletas</title>
 </head>
 <body>
-Insertar:
-<form action="#" th:action="@{/insertar}" th:object="${atleta}" method="post">
-  <label for="name">Nombre</label>
-  <input type="text" th:field="*{primerNombre}" id="name">
-  <input type="submit" value="Add Atleta">
-</form>
+  Insertar:
+  <form action="#" th:action="@{/insertarAtleta}" th:object="${atleta}" method="post">
+    <div>
+      <label for="primer_nombre">primer nombre</label>
+      <input type="text" th:field="*{primerNombre}" id="primer_nombre">
+    </div>
+    <div>
+      <label for="segundo_nombre">segundo nombre</label>
+      <input type="text" th:field="*{segundoNombre}" id="segundo_nombre">
+    </div>
+    <div>
+      <label for="primer_apellido">primer apellido</label>
+      <input type="text" th:field="*{primerApellido}" id="primer_apellido">
+    </div>
+    <div>
+      <label for="segundo_apellido">segundo apellido</label>
+      <input type="text" th:field="*{segundoApellido}" id="segundo_apellido">
+    </div>
+    <div>
+      <label for="fecha_nacimiento">fecha de nacimiento</label>
+      <input type="text" th:field="*{fechaNacimiento}" id="fecha_nacimiento">
+    </div>
+    <input type="submit" value="Agregar Atleta">
+  </form>
 </body>
 </html>

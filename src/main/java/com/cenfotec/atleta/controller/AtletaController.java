@@ -1,6 +1,6 @@
 package com.cenfotec.atleta.controller;
-
 import com.cenfotec.atleta.domian.Atleta;
+import com.cenfotec.atleta.domian.Correo;
 import com.cenfotec.atleta.service.AtletaService;
 import com.cenfotec.atleta.service.CorreoService;
 import org.slf4j.Logger;
@@ -31,24 +31,24 @@ public class AtletaController {
         return "index";
     }
 
-    @RequestMapping(value = "/insertar", method = RequestMethod.GET)
+    @RequestMapping(value = "/insertarAtleta", method = RequestMethod.GET)
     public String insertarPage(Model model) {
         model.addAttribute(new Atleta());
-        return "insertar";
+        return "insertarAtleta";
     }
-    @RequestMapping(value = "/atleta/insertar", method = RequestMethod.POST)
+    @RequestMapping(value = "/insertarAtleta", method = RequestMethod.POST)
     public String insertarAction(Atleta atleta, BindingResult result, Model model) {
         atletaService.saveAtleta(atleta);
         return "index";
     }
 
-    @RequestMapping("/atleta/listar")
+    @RequestMapping("/listarAtleta")
     public String listar(Model model) {
-        logger.info("lista de Atletas", atletaService.getAllAtletas());
-        model.addAttribute("Atletas", atletaService.getAllAtletas());
-        return "listar";
+        logger.info("atletas", atletaService.getAllAtletas());
+        model.addAttribute("atletas", atletaService.getAllAtletas());
+        return "listarAtleta";
     }
-    @GetMapping(path = {"atleta/{id}"})
+    @GetMapping(path = {"/atleta/{id}"})
     public ResponseEntity<Atleta> getAtletaById(@PathVariable long id) {
         Optional<Atleta> result = atletaService.getAtletaById(id);
         if (result.isPresent()) {
@@ -66,4 +66,26 @@ public class AtletaController {
 //            return ResponseEntity.notFound().build();
 //        }
 //    }
+    @RequestMapping("/agregarCorreo/{id}")
+    public String carrgarAtletaParaCorreo(Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        Correo correo = new Correo();
+        if (atleta.isPresent()) {
+            model.addAttribute("nombreAtleta", atleta.get().getPrimerNombre());
+            model.addAttribute("idAtleta", atleta.get().getIdAtleta());
+            model.addAttribute("correo", correo);
+            return "agregarCorreo";
+        }
+        return "noFound";
+    }
+    @RequestMapping(value = "/agregarCorreo/{id}", method = RequestMethod.POST)
+    public String guardarCorreo(Correo correo, Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        if (atleta.isPresent()) {
+            correo.setAtleta(atleta.get());
+            correoService.saveCorreo(correo);
+            return "index";
+        }
+        return "error";
+    }
 }

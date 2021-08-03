@@ -7,11 +7,11 @@ public class Correo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idCorreo;
-    private String correo;
+    private String mail;
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Atleta atleta_correo;
+    private Atleta atleta;
 
 //    public Correo() {
 //    }
@@ -24,19 +24,19 @@ public class Correo {
         this.idCorreo = idCorreo;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getMail() {
+        return mail;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setMail(String correo) {
+        this.mail = correo;
     }
 
     public Atleta getAtleta() {
-        return atleta_correo;
+        return atleta;
     }
 
     public void setAtleta(Atleta atleta) {
-        this.atleta_correo = atleta;
+        this.atleta = atleta;
     }
 }

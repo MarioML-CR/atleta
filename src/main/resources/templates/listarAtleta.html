@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Atletas</title>
+</head>
+<body>
+<div>
+    <a href="/">Home</a>
+</div>
+<div>
+    <h1>Lista de atletas</h1>
+    <ul>
+        <div th:each="entry: ${atletas}">
+            <li>
+                <div>
+                    <div>
+                        <h4>
+                            <span th:text="${entry.primerNombre}">primer nombre</span>
+                        </h4>
+                    </div>
+                    <div>
+                        <h4>
+                            <span th:text="${entry.segundoNombre}">segundo nombre</span>
+                        </h4>
+                    </div>
+                    <div>
+                        <h4>
+                            <span th:text="${entry.primerApellido}">primer apellido</span>
+                        </h4>
+                    </div>
+                    <div>
+                        <h4>
+                            <span th:text="${entry.segundoApellido}">segundo apellido</span>
+                        </h4>
+                    </div>
+                    <div>
+                        <h4>
+                            <span th:text="${entry.fechaNacimiento}">fecha de nacimiento</span>
+                        </h4>
+                    </div>
+                </div>
+                <div>
+                    Cantidad de direcciones de correo: <span th:text="${entry.correos.size()}">0</span>
+                    <a th:href="@{/agregarCorreo/{id}(id = ${entry.idAtleta})}">Agregar correo</a>
+                </div>
+                <div th:each="correo: ${entry.correos}">
+                    <span th:text="${correo.mail}" >correo</span>
+                </div>
+            </li>
+        </div>
+    </ul>
+</div>
+
+</body>
+</html>

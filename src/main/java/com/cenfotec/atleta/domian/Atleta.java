@@ -14,11 +14,9 @@ public class Atleta {
     private String primerApellido;
     private String segundoApellido;
     private Date fechaNacimiento;
-    private String telefono;
-    private String correo;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_correo")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
     private Set<Correo> correos;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_telefono")
 //    private Set<Telefono> telefonos;
@@ -76,22 +74,6 @@ public class Atleta {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public Set<Correo> getCorreos() {
