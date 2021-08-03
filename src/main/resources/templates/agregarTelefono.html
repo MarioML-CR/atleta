@@ -5,13 +5,18 @@
     <title>Agregar teléfono</title>
 </head>
 <body>
-    Registro de teléfono del atleta:
-    <span th:text="${nombreAtleta}" >primer nombre</span>
-    <form action="#" th:action="@{/agregarTelefono/{id}(id=${idAtleta})}" th:object="${telefono}"
-          method="post" />
-    <label for="phone">número</label>
-    <input type="text" th:field="*{telefono.numero}" id="phone">
-    <input type="submit" value="Agregar teléfono">
-    </form>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        Registro de teléfono del atleta:
+        <span th:text="${nombreAtleta}" >primer nombre</span>
+        <form action="#" th:action="@{/agregarTelefono/{id}(id=${idAtleta})}" th:object="${telefono}"
+              method="post" />
+        <label for="phone">número</label>
+        <input type="text" th:field="*{telefono.numero}" id="phone">
+        <input type="submit" value="Agregar teléfono">
+        </form>
+    </div>
 </body>
 </html>

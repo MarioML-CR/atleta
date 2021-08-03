@@ -6,6 +6,10 @@
   <title>Atletas</title>
 </head>
 <body>
+<div>
+  <a href="/">Home</a>
+</div>
+<div>
   Insertar:
   <form action="#" th:action="@{/insertarAtleta}" th:object="${atleta}" method="post">
     <div>
@@ -34,5 +38,6 @@
     </div>
     <input type="submit" value="Agregar Atleta">
   </form>
+</div>
 </body>
 </html>

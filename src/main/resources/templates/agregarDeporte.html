@@ -5,6 +5,10 @@
     <title>Agregar deporte</title>
 </head>
 <body>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
         Registrar deporte para el atleta:
         <span th:text="${nombreAtleta}" >primer nombre</span>
         <form action="#" th:action="@{/agregarDeporte/{id}(id=${idAtleta})}" th:object="${deporte}"
@@ -13,5 +17,6 @@
         <input type="text" th:field="*{deporte.nombreDeporte}" id="sport">
         <input type="submit" value="Agregar deporte">
         </form>
+    </div>
 </body>
 </html>

@@ -5,27 +5,32 @@
     <title>Agregar dirección</title>
 </head>
 <body>
-    Registrar direccion para el atleta:
-    <span th:text="${nombreAtleta}" >primer nombre</span>
-    <form action="#" th:action="@{/agregarDireccion/{id}(id=${idAtleta})}" th:object="${adress}"
-          method="post" />
     <div>
-        <label for="direc">provincia</label>
-        <input type="text" th:field="*{adress.provincia}" id="direc">
+        <a href="/">Home</a>
     </div>
     <div>
-        <label for="_canton">cantón</label>
-        <input type="text" th:field="*{adress.canton}" id="_canton">
+        Registrar direccion para el atleta:
+        <span th:text="${nombreAtleta}" >primer nombre</span>
+        <form action="#" th:action="@{/agregarDireccion/{id}(id=${idAtleta})}" th:object="${adress}"
+              method="post" />
+        <div>
+            <label for="direc">provincia</label>
+            <input type="text" th:field="*{adress.provincia}" id="direc">
+        </div>
+        <div>
+            <label for="_canton">cantón</label>
+            <input type="text" th:field="*{adress.canton}" id="_canton">
+        </div>
+        <div>
+            <label for="_distrito">distrito</label>
+            <input type="text" th:field="*{adress.distrito}" id="_distrito">
+        </div>
+        <div>
+            <label for="_directionExacta">dirección exacta</label>
+            <input type="text" th:field="*{adress.directionExacta}" id="_directionExacta">
+        </div>
+        <input type="submit" value="Agregar dirección">
+        </form>
     </div>
-    <div>
-        <label for="_distrito">distrito</label>
-        <input type="text" th:field="*{adress.distrito}" id="_distrito">
-    </div>
-    <div>
-        <label for="_directionExacta">dirección exacta</label>
-        <input type="text" th:field="*{adress.directionExacta}" id="_directionExacta">
-    </div>
-    <input type="submit" value="Agregar dirección">
-    </form>
 </body>
 </html>

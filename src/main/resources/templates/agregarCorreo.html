@@ -5,13 +5,18 @@
     <title>Agregar correo</title>
 </head>
 <body>
-    Registrar correo para el atleta:
-    <span th:text="${nombreAtleta}" >primer nombre</span>
-    <form action="#" th:action="@{/agregarCorreo/{id}(id=${idAtleta})}" th:object="${correo}"
-          method="post" />
-    <label for="email">correo</label>
-    <input type="text" th:field="*{correo.mail}" id="email">
-    <input type="submit" value="Agregar correo">
-    </form>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <div>
+        Registrar correo para el atleta:
+        <span th:text="${nombreAtleta}" >primer nombre</span>
+        <form action="#" th:action="@{/agregarCorreo/{id}(id=${idAtleta})}" th:object="${correo}"
+              method="post" />
+        <label for="email">correo</label>
+        <input type="text" th:field="*{correo.mail}" id="email">
+        <input type="submit" value="Agregar correo">
+        </form>
+    </div>
 </body>
 </html>
