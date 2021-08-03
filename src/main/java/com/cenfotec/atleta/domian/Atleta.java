@@ -14,6 +14,7 @@ public class Atleta {
     private String primerApellido;
     private String segundoApellido;
     private Date fechaNacimiento;
+    private String sexo;
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
@@ -24,11 +25,9 @@ public class Atleta {
     private Set<IndiceMasaMuscular> indicesMasaMuscular;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta")
     private Set<Deporte> deportes;
+
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "atleta_provincia")
 //    private Set<Provincia> provincias;
-
-//    public Atleta() {
-//    }
 
     public long getIdAtleta() {
         return idAtleta;
@@ -110,7 +109,15 @@ public class Atleta {
         this.deportes = deportes;
     }
 
-//
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    //
 //    public Set<Provincia> getProvincias() {
 //        return provincias;
 //    }
