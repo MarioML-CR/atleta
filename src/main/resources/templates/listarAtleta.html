@@ -12,40 +12,40 @@
 <div>
     <h1>Lista de atletas</h1>
     <ul>
-        <div th:each="entry: ${atletas}">
+        <div th:each="atleta: ${atletas}">
             <li>
                 <div>
                     <div>
                         <h4>
-                            <span th:text="${entry.primerNombre}">primer nombre</span>
+                            <span th:text="${atleta.primerNombre}">primer nombre</span>
                         </h4>
                     </div>
                     <div>
                         <h4>
-                            <span th:text="${entry.segundoNombre}">segundo nombre</span>
+                            <span th:text="${atleta.segundoNombre}">segundo nombre</span>
                         </h4>
                     </div>
                     <div>
                         <h4>
-                            <span th:text="${entry.primerApellido}">primer apellido</span>
+                            <span th:text="${atleta.primerApellido}">primer apellido</span>
                         </h4>
                     </div>
                     <div>
                         <h4>
-                            <span th:text="${entry.segundoApellido}">segundo apellido</span>
+                            <span th:text="${atleta.segundoApellido}">segundo apellido</span>
                         </h4>
                     </div>
                     <div>
                         <h4>
-                            <span th:text="${entry.fechaNacimiento}">fecha de nacimiento</span>
+                            <span th:text="${atleta.fechaNacimiento}">fecha de nacimiento</span>
                         </h4>
                     </div>
                 </div>
                 <div>
-                    Cantidad de direcciones de correo: <span th:text="${entry.correos.size()}">0</span>
-                    <a th:href="@{/agregarCorreo/{id}(id = ${entry.idAtleta})}">Agregar correo</a>
+                    Cantidad de direcciones de correo: <span th:text="${atleta.correos.size()}">0</span>
+                    <a th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>
                 </div>
-                <div th:each="correo: ${entry.correos}">
+                <div th:each="correo: ${atleta.correos}">
                     <span th:text="${correo.mail}" >correo</span>
                 </div>
             </li>
