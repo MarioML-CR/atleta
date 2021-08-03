@@ -10,14 +10,13 @@ import java.util.Optional;
 
 @Service
 public class CorreoServiceImpl implements CorreoService{
+
     @Autowired
     CorreoRepository correoRepository;
 
 
     @Override
-    public void saveCorreo(Correo correo) {
-        correoRepository.save(correo);
-    }
+    public void saveCorreo(Correo correo) { correoRepository.save(correo); }
 
     @Override
     public Optional<Correo> getCorreoById(Long id) {

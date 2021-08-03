@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar deporte</title>
+</head>
+<body>
+        Registrar deporte para el atleta:
+        <span th:text="${nombreAtleta}" >primer nombre</span>
+        <form action="#" th:action="@{/agregarDeporte/{id}(id=${idAtleta})}" th:object="${deporte}"
+              method="post" />
+        <label for="sport">deporte</label>
+        <input type="text" th:field="*{deporte.nombreDeporte}" id="sport">
+        <input type="submit" value="Agregar deporte">
+        </form>
+</body>
+</html>

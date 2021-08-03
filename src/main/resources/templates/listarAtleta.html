@@ -82,6 +82,18 @@
 
                     </div>
                 </div>
+                <div>
+                    <div>
+                        Cantidad de deportes:
+                        <span th:text="${atleta.deportes.size()}">0</span>
+                        <a th:href="@{/agregarDeporte/{id}(id = ${atleta.idAtleta})}">Agregar deporte</a>
+                    </div>
+                    <div th:each="deporte: ${atleta.deportes}">
+                        <div>
+                            <span th:text="${deporte.nombreDeporte}" >deporte</span>
+                        </div>
+                    </div>
+                </div>
             </li>
         </div>
     </ul>

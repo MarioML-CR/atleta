@@ -1,12 +1,6 @@
 package com.cenfotec.atleta.controller;
-import com.cenfotec.atleta.domian.Atleta;
-import com.cenfotec.atleta.domian.Correo;
-import com.cenfotec.atleta.domian.IndiceMasaMuscular;
-import com.cenfotec.atleta.domian.Telefono;
-import com.cenfotec.atleta.service.AtletaService;
-import com.cenfotec.atleta.service.CorreoService;
-import com.cenfotec.atleta.service.IndiceMasaMuscularService;
-import com.cenfotec.atleta.service.TelefonoService;
+import com.cenfotec.atleta.domian.*;
+import com.cenfotec.atleta.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +29,9 @@ public class AtletaController {
 
     @Autowired
     IndiceMasaMuscularService indiceMasaMuscularService;
+
+    @Autowired
+    DeporteService deporteService;
 
     @RequestMapping({"/"})
     public String home(Model model) {
@@ -142,6 +139,29 @@ public class AtletaController {
         if(atleta.isPresent()) {
             indiceMasaMuscular.setAtleta(atleta.get());
             indiceMasaMuscularService.saveIMC(indiceMasaMuscular);
+            return "index";
+        }
+        return "error";
+    }
+
+    @RequestMapping("/agregarDeporte/{id}")
+    public String cargarAtletaParaDeporte(Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        Deporte deporte = new Deporte();
+        if (atleta.isPresent()) {
+            model.addAttribute("nombreAtleta", atleta.get().getPrimerNombre());
+            model.addAttribute("idAtleta", atleta.get().getIdAtleta());
+            model.addAttribute("deporte", deporte);
+            return "agregarDeporte";
+        }
+        return "noFound";
+    }
+    @RequestMapping(value = "/agregarDeporte/{id}", method = RequestMethod.POST)
+    public String guardarDeporte(Deporte deporte, Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        if(atleta.isPresent()) {
+            deporte.setAtleta(atleta.get());
+            deporteService.saveDeporte(deporte);
             return "index";
         }
         return "error";

@@ -14,9 +14,6 @@ public class Telefono {
     @JoinColumn(nullable = false)
     private Atleta atleta;
 
-//    public Telefono() {
-//    }
-
     public long getIdTelefono() {
         return idTelefono;
     }
