@@ -87,6 +87,28 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <div>
+                        Cantidad de direcciones:
+                        <span th:text="${atleta.direcciones.size()}">0</span>
+                        <a th:href="@{/agregarDireccion/{id}(id = ${atleta.idAtleta})}">Agregar dirección</a>
+                    </div>
+                    <div th:each="adress: ${atleta.direcciones}">
+                        <div>
+                            <span th:text="${adress.provincia}" >provincia</span>
+                        </div>
+                        <div>
+                            <span th:text="${adress.canton}" >cantón</span>
+                        </div>
+                        <div>
+                            <span th:text="${adress.distrito}" >distrito</span>
+                        </div>
+                        <div>
+                            <span th:text="${adress.directionExacta}" >dirección exacta</span>
+                        </div>
+
+                    </div>
+                </div>
             </li>
         </div>
     </ul>

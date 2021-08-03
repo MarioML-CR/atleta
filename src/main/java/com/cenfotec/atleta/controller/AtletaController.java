@@ -33,6 +33,9 @@ public class AtletaController {
     @Autowired
     DeporteService deporteService;
 
+    @Autowired
+    DireccionService direccionService;
+
     @RequestMapping({"/"})
     public String home(Model model) {
         return "index";
@@ -162,6 +165,28 @@ public class AtletaController {
         if(atleta.isPresent()) {
             deporte.setAtleta(atleta.get());
             deporteService.saveDeporte(deporte);
+            return "index";
+        }
+        return "error";
+    }
+    @RequestMapping("/agregarDireccion/{id}")
+    public String cargarAtletaParaDireccion(Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        Direccion direccion = new Direccion();
+        if (atleta.isPresent()) {
+            model.addAttribute("nombreAtleta", atleta.get().getPrimerNombre());
+            model.addAttribute("idAtleta", atleta.get().getIdAtleta());
+            model.addAttribute("adress", direccion);
+            return "agregarDireccion";
+        }
+        return "noFound";
+    }
+    @RequestMapping(value = "/agregarDireccion/{id}", method = RequestMethod.POST)
+    public String guardarDireccion(Direccion direccion, Model model, @PathVariable long id) {
+        Optional<Atleta> atleta = atletaService.getAtletaById(id);
+        if(atleta.isPresent()) {
+            direccion.setAtleta(atleta.get());
+            direccionService.saveDireccion(direccion);
             return "index";
         }
         return "error";
