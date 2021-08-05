@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar IMC</title>
+</head>
+<body>
+  Actualizar índice de masa muscular de:
+  <span th:text="${atleta.primerNombre}" >nombre</span>
+  <form action="#" th:action="@{/updateIMC/{id}(id=${imcAtleta.getIdIMC()})}" th:object="${imcAtleta}"
+        method="post" />
+  <div>
+      <label for="pesoKg">peso ne KG</label>
+      <input type="text" th:field="*{imcAtleta.peso}" id="pesoKg">
+  </div>
+  <input type="submit" value="Actualizar IMC">
+  </form>
+</body>
+</html>
