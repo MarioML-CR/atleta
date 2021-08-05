@@ -9,7 +9,7 @@
   <a href="/">Home</a>
 </div>
 <div>
-  Actualizar teléfono:
+  Actualizar teléfono de:
   <span th:text="${atleta.primerNombre}" >nombre</span>
   <form action="#" th:action="@{/updateTelefono/{id}(id=${telefonoAtleta.idTelefono})}" th:object="${telefonoAtleta}"
         method="post" />

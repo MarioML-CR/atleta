@@ -9,7 +9,7 @@
   <a href="/">Home</a>
 </div>
 <div>
-  Actualizar dirección:
+  Actualizar dirección de:
   <span th:text="${atleta.primerNombre}" >nombre</span>
   <form action="#" th:action="@{/updateDireccion/{id}(id=${direccionAtleta.idDireccion})}" th:object="${direccionAtleta}"
         method="post" />

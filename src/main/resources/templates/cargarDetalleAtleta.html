@@ -7,11 +7,13 @@
 </head>
 <body>
 <div>
-    <a href="/">Home</a>
+    <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
 </div>
     <form style="width: 90%">
 <!--        Datos generales-->
-        <div style="text-align: center; border: black">Dato generales del atleta</div>
+        <div style="text-align: center; border: black; font-size: 22px; height: 2rem">
+            Dato generales del atleta
+        </div>
         <div style="display: flex">
             <div style="width: 16%">
                 <div>primer nombre</div>
@@ -85,7 +87,7 @@
                     <th>cantón</th>
                     <th>distrito</th>
                     <th>otras señas</th>
-                    <th></th>
+                    <th>acción</th>
                 </tr>
                 <tr th:each="adress, custStat: ${atleta.direcciones}">
                     <td th:text="${custStat.count}"></td>
@@ -98,40 +100,31 @@
                     </td>
                 </tr>
             </table>
-
-<!--            <div style="display: flex" th:each="adress: ${atleta.direcciones}">-->
-<!--                <div style="width: 20%">-->
-<!--                    <div style="background-color: tan">provincia</div>-->
-<!--                    <div>-->
-<!--                        <span th:text="${adress.provincia}" >provincia</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div style="width: 20%">-->
-<!--                    <div style="background-color: tan">cantón</div>-->
-<!--                    <div>-->
-<!--                        <span th:text="${adress.canton}" >cantón</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div style="width: 20%">-->
-<!--                    <div style="background-color: tan">distrito</div>-->
-<!--                    <div>-->
-<!--                        <span th:text="${adress.distrito}" >distrito</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div style="width: 20%">-->
-<!--                    <div style="background-color: tan">dirección exacta</div>-->
-<!--                    <div>-->
-<!--                        <span th:text="${adress.directionExacta}" >dirección exacta</span>-->
-<!--                    </div>-->
-
-<!--                </div>-->
-<!--                <div style="width: 20%">-->
-<!--                    <div style="background-color: tan">provincia</div>-->
-<!--                    Actualizar-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
-        <div>IMC</div>
+<!--        Indice de masa muscular-->
+        <div>
+            <div style="text-align: center; border: black; background-color: gray">Indice de masa muscular</div>
+            <table style="width: 100%">
+                <tr style="background-color: tan">
+                    <th>consecutivo</th>
+                    <th>peso</th>
+                    <th>estatura</th>
+                    <th>IMC</th>
+                    <th>fecha de cálculo</th>
+                    <th>acción</th>
+                </tr>
+                <tr th:each="imc, custStat: ${atleta.indicesMasaMuscular}">
+                    <td th:text="${custStat.count}"></td>
+                    <td th:text="${imc.peso}"></td>
+                    <td th:text="${imc.estatura}"></td>
+                    <td th:text="${imc.getIMC()}"></td>
+                    <td th:text="${imc.fechaCalculo}"></td>
+                    <td>
+                        <a th:href="@{/updateIMC/{id}(id = ${imc.idIMC})}">Actualizar peso</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
 </body>
 </html>

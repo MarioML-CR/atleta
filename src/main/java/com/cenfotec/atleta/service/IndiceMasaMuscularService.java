@@ -9,4 +9,5 @@ public interface IndiceMasaMuscularService {
     public void saveIMC(IndiceMasaMuscular indiceMasaMuscular);
     public Optional<IndiceMasaMuscular> getIndiceMasaMuscularById(Long id);
     public List<IndiceMasaMuscular> getAllIndiceMasaMuscular();
+    public void updateIMC(IndiceMasaMuscular indiceMasaMuscular);
 }

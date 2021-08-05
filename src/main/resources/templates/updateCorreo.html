@@ -9,7 +9,7 @@
   <a href="/">Home</a>
 </div>
 <div>
-  Actualizar correo:
+  Actualizar correo de:
   <span th:text="${atleta.primerNombre}" >nombre</span>
   <form action="#" th:action="@{/updateCorreo/{id}(id=${correoAtleta.idCorreo})}" th:object="${correoAtleta}"
         method="post" />

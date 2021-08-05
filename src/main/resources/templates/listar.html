@@ -8,20 +8,21 @@
 </head>
 <body>
     <div>
-        <a href="/">Home</a>
+        <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
     </div>
-    <table style="width: 90%">
-        <tr>
-            <th>#</th>
+    <div style="text-align: center; border: black; background-color: gray; font-size: 22px; height: 2rem">Resumen información atletas</div>
+    <table style="width: 100%">
+        <tr style="background-color: tan; height: 2rem">
+            <th>consecutivo</th>
             <th>primer nombre</th>
             <th>segundo nombre</th>
             <th>primer apellido</th>
             <th>segundo apellido</th>
             <th>sexo</th>
             <th>fecha nacimiento</th>
-            <th>Opción</th>
+            <th>detalle</th>
         </tr>
-        <tr th:each="atleta, custStat: ${atletas}">
+        <tr style="height: 1.5rem" th:each="atleta, custStat: ${atletas}">
             <td th:text="${custStat.count}"></td>
             <td th:text="${atleta.primerNombre}"></td>
             <td th:text="${atleta.segundoNombre}"></td>

@@ -196,11 +196,39 @@ public class AtletaController {
         return "noFound";
     }
     @RequestMapping(value = "/agregarIMC/{id}", method = RequestMethod.POST)
-    public String guardarIMC(IndiceMasaMuscular indiceMasaMuscular, Model model, @PathVariable long id) {
+    public String guardarIMC(IndiceMasaMuscular indiceMasaMuscular,
+                             Model model, @PathVariable long id) {
         Optional<Atleta> atleta = atletaService.getAtletaById(id);
         if(atleta.isPresent()) {
             indiceMasaMuscular.setAtleta(atleta.get());
             indiceMasaMuscularService.saveIMC(indiceMasaMuscular);
+            return "index";
+        }
+        return "error";
+    }
+
+    @RequestMapping("/updateIMC/{id}")
+    public String cargarIMC(Model model, @PathVariable long id) {
+        Optional<IndiceMasaMuscular> indiceMasaMuscular = indiceMasaMuscularService
+                .getIndiceMasaMuscularById(id);
+        if (indiceMasaMuscular.isPresent()) {
+            model.addAttribute("imcAtleta", indiceMasaMuscular.get());
+            model.addAttribute("atleta", indiceMasaMuscular.get().getAtleta());
+            return "updateIMC";
+        }
+        return "noFound";
+    }
+
+    @RequestMapping(value = "/updateIMC/{id}", method = RequestMethod.POST)
+    public String updateDireccion(IndiceMasaMuscular indiceMasaMuscular,
+                                  @PathVariable long id) {
+        Optional<IndiceMasaMuscular> record = indiceMasaMuscularService
+                .getIndiceMasaMuscularById(id);
+        if (record.isPresent()) {
+            indiceMasaMuscular.setAtleta(record.get().getAtleta());
+            indiceMasaMuscular.setIdIMC(record.get().getIdIMC());
+            indiceMasaMuscular.setEstatura(record.get().getEstatura());
+            indiceMasaMuscularService.updateIMC(indiceMasaMuscular);
             return "index";
         }
         return "error";

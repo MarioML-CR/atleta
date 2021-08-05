@@ -32,6 +32,20 @@ public class IndicemasaMuscularServiceImpl implements IndiceMasaMuscularService{
         return indiceMasaMuscularRepository.findAll();
     }
 
+    @Override
+    public void updateIMC(IndiceMasaMuscular indiceMasaMuscular) {
+        Optional<IndiceMasaMuscular> record = indiceMasaMuscularRepository.
+                findById(indiceMasaMuscular.getIdIMC());
+        if (record.isPresent()) {
+            IndiceMasaMuscular data = record.get();
+            data.setIdIMC(indiceMasaMuscular.getIdIMC());
+            data.setPeso(indiceMasaMuscular.getPeso());
+            data.setIMC(calculoIMC(indiceMasaMuscular));
+            data.setFechaCalculo(new Date());
+            indiceMasaMuscularRepository.save(data);
+        }
+    }
+
     private float calculoIMC(IndiceMasaMuscular indiceMasaMuscular){
         return indiceMasaMuscular.getPeso() / indiceMasaMuscular.getEstatura();
     }
