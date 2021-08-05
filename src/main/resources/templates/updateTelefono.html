@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar teléfono</title>
+</head>
+<body>
+<div>
+  <a href="/">Home</a>
+</div>
+<div>
+  Actualizar teléfono:
+  <span th:text="${atleta.primerNombre}" >nombre</span>
+  <form action="#" th:action="@{/updateTelefono/{id}(id=${telefonoAtleta.idTelefono})}" th:object="${telefonoAtleta}"
+        method="post" />
+  <label for="email">correo</label>
+  <input type="text" th:field="*{telefonoAtleta.numero}" id="email">
+  <input type="submit" value="Actualizar teléfono">
+  </form>
+</div>
+</body>
+</html>

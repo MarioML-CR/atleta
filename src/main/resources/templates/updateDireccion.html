@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar dirección</title>
+</head>
+<body>
+<div>
+  <a href="/">Home</a>
+</div>
+<div>
+  Actualizar dirección:
+  <span th:text="${atleta.primerNombre}" >nombre</span>
+  <form action="#" th:action="@{/updateDireccion/{id}(id=${direccionAtleta.idDireccion})}" th:object="${direccionAtleta}"
+        method="post" />
+    <div>
+        <label for="direc">provincia</label>
+        <input type="text" th:field="*{direccionAtleta.provincia}" id="direc">
+    </div>
+    <div>
+        <label for="_canton">cantón</label>
+        <input type="text" th:field="*{direccionAtleta.canton}" id="_canton">
+    </div>
+    <div>
+        <label for="_distrito">distrito</label>
+        <input type="text" th:field="*{direccionAtleta.distrito}" id="_distrito">
+    </div>
+    <div>
+        <label for="_directionExacta">dirección exacta</label>
+        <input type="text" th:field="*{direccionAtleta.directionExacta}" id="_directionExacta">
+    </div>
+    <input type="submit" value="actualizar dirección">
+  </form>
+</div>
+</body>
+</html>

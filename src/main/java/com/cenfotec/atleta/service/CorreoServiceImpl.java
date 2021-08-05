@@ -27,4 +27,15 @@ public class CorreoServiceImpl implements CorreoService{
     public List<Correo> getAllCorreos() {
         return correoRepository.findAll();
     }
+
+    @Override
+    public void updateCorreo(Correo correo) {
+        Optional<Correo> record = correoRepository.findById(correo.getIdCorreo());
+        if (record.isPresent()) {
+            Correo data = record.get();
+            data.setIdCorreo(correo.getIdCorreo());
+            data.setMail(correo.getMail());
+            correoRepository.save(data);
+        }
+    }
 }

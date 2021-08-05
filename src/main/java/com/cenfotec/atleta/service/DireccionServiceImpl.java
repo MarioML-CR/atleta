@@ -19,10 +19,23 @@ public class DireccionServiceImpl implements DireccionService{
     public void saveDireccion(Direccion direccion) { direccionRepository.save(direccion); }
 
     @Override
-    public Optional<Direccion> getCorreoById(Long id) {
+    public Optional<Direccion> getDireccionById(Long id) {
         return direccionRepository.findById(id).map(record -> Optional.of(record)).orElse(Optional.empty());
     }
 
     @Override
     public List<Direccion> getAllDirecciones() { return direccionRepository.findAll(); }
+
+    @Override
+    public void updateDireccion(Direccion direccion) {
+        Optional<Direccion> record = direccionRepository.findById(direccion.getIdDireccion());
+        if (record.isPresent()) {
+            Direccion data = record.get();
+            data.setIdDireccion(direccion.getIdDireccion());
+            data.setProvincia(direccion.getProvincia());
+            data.setCanton(direccion.getCanton());
+            data.setDistrito(direccion.getDistrito());
+            direccionRepository.save(data);
+        }
+    }
 }

@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface DireccionService {
     public void saveDireccion(Direccion direccion);
-    public Optional<Direccion> getCorreoById(Long id);
+    public Optional<Direccion> getDireccionById(Long id);
     public List<Direccion> getAllDirecciones();
+    public void updateDireccion(Direccion direccion);
 }

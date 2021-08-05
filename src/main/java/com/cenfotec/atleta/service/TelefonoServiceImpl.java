@@ -27,4 +27,15 @@ public class TelefonoServiceImpl implements TelefonoService{
     public List<Telefono> getAllTelefonos() {
         return telefonoRepository.findAll();
     }
+
+    @Override
+    public void updateTelefono(Telefono telefono) {
+        Optional<Telefono> record = telefonoRepository.findById(telefono.getIdTelefono());
+        if (record.isPresent()) {
+            Telefono data = record.get();
+            data.setIdTelefono(telefono.getIdTelefono());
+            data.setNumero(telefono.getNumero());
+            telefonoRepository.save(data);
+        }
+    }
 }

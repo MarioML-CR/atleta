@@ -36,7 +36,8 @@
                 </div>
                 <div>
                     <div>
-                        Cantidad de direcciones de correo: <span th:text="${atleta.correos.size()}">0</span>
+                        Cantidad de direcciones de correo:
+                        <span th:text="${atleta.correos.size()}">0</span>
                         <a th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>
                     </div>
                     <div th:each="correo: ${atleta.correos}">

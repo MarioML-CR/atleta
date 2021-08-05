@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar correo</title>
+</head>
+<body>
+<div>
+  <a href="/">Home</a>
+</div>
+<div>
+  Actualizar correo:
+  <span th:text="${atleta.primerNombre}" >nombre</span>
+  <form action="#" th:action="@{/updateCorreo/{id}(id=${correoAtleta.idCorreo})}" th:object="${correoAtleta}"
+        method="post" />
+  <label for="email">correo</label>
+  <input type="text" th:field="*{correoAtleta.mail}" id="email">
+  <input type="submit" value="Actualizar correo">
+  </form>
+</div>
+</body>
+</html>

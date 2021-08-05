@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Detalle</title>
+</head>
+<body>
+<div>
+    <a href="/">Home</a>
+</div>
+    <form style="width: 90%">
+<!--        Datos generales-->
+        <div style="text-align: center; border: black">Dato generales del atleta</div>
+        <div style="display: flex">
+            <div style="width: 16%">
+                <div>primer nombre</div>
+                <div th:text="${atleta.primerNombre}"></div>
+            </div>
+            <div style="width: 16%">
+                <div>segundo nombre</div>
+                <div th:text="${atleta.segundoNombre}"></div>
+            </div>
+            <div style="width: 16%">
+                <div>primer apellido</div>
+                <div th:text="${atleta.primerApellido}"></div>
+            </div>
+            <div style="width: 16%">
+                <div>segundo apellido</div>
+                <div th:text="${atleta.segundoApellido}"></div>
+            </div>
+            <div style="width: 18%">
+                <div>sexo</div>
+                <div th:text="${atleta.sexo}"></div>
+            </div>
+            <div style="width: 18%">
+                <div>fecha de nacimiento</div>
+                <div th:text="${atleta.fechaNacimiento}"></div>
+            </div>
+            </div>
+        </div>
+<!--        Correos, teléfonos y deportes-->
+        <div style="display: flex">
+<!--            Detalle correos-->
+            <div style="width: 34%; border: 1px solid gray">
+                <div style="background-color: gray">correo</div>
+                <div style="display: flex" th:each="correo: ${atleta.correos}">
+                    <div style="width: 60%">
+                        <span th:text="${correo.mail}" >correo</span>
+                    </div>
+                    <div style="width: 40%">
+                        <a th:href="@{/updateCorreo/{id}(id = ${correo.idCorreo})}">Actualizar</a>
+                    </div>
+                </div>
+            </div>
+<!--            Detalle telefonos-->
+            <div style="width: 33%; border: 1px solid gray">
+                <div style="background-color: gray">teléfono</div>
+                <div style="display: flex" th:each="telefono: ${atleta.telefonos}">
+                    <div style="width: 60%">
+                        <span th:text="${telefono.numero}" >teléfono</span>
+                    </div>
+                    <div style="width: 40%">
+                        <a th:href="@{/updateTelefono/{id}(id = ${telefono.idTelefono})}">Actualizar</a>
+                    </div>
+                </div>
+            </div>
+<!--            Detalle deportes-->
+            <div style="width: 33%; border: 1px solid gray">
+                <div style="background-color: gray">deporte</div>
+                <div th:each="deporte: ${atleta.deportes}">
+                    <div>
+                        <span th:text="${deporte.nombreDeporte}" >deporte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        Direcciones-->
+        <div>
+            <div style="text-align: center; border: black; background-color: gray">Dirección</div>
+            <table style="width: 100%">
+                <tr style="background-color: tan">
+                    <th>consecutivo</th>
+                    <th>provincia</th>
+                    <th>cantón</th>
+                    <th>distrito</th>
+                    <th>otras señas</th>
+                    <th></th>
+                </tr>
+                <tr th:each="adress, custStat: ${atleta.direcciones}">
+                    <td th:text="${custStat.count}"></td>
+                    <td th:text="${adress.provincia}"></td>
+                    <td th:text="${adress.canton}"></td>
+                    <td th:text="${adress.distrito}"></td>
+                    <td th:text="${adress.directionExacta}"></td>
+                    <td>
+                        <a th:href="@{/updateDireccion/{id}(id = ${adress.idDireccion})}">Actualizar</a>
+                    </td>
+                </tr>
+            </table>
+
+<!--            <div style="display: flex" th:each="adress: ${atleta.direcciones}">-->
+<!--                <div style="width: 20%">-->
+<!--                    <div style="background-color: tan">provincia</div>-->
+<!--                    <div>-->
+<!--                        <span th:text="${adress.provincia}" >provincia</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div style="width: 20%">-->
+<!--                    <div style="background-color: tan">cantón</div>-->
+<!--                    <div>-->
+<!--                        <span th:text="${adress.canton}" >cantón</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div style="width: 20%">-->
+<!--                    <div style="background-color: tan">distrito</div>-->
+<!--                    <div>-->
+<!--                        <span th:text="${adress.distrito}" >distrito</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div style="width: 20%">-->
+<!--                    <div style="background-color: tan">dirección exacta</div>-->
+<!--                    <div>-->
+<!--                        <span th:text="${adress.directionExacta}" >dirección exacta</span>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div style="width: 20%">-->
+<!--                    <div style="background-color: tan">provincia</div>-->
+<!--                    Actualizar-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+        <div>IMC</div>
+    </form>
+</body>
+</html>

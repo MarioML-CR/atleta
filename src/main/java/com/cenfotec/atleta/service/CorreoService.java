@@ -9,4 +9,5 @@ public interface CorreoService {
     public void saveCorreo(Correo correo);
     public Optional<Correo> getCorreoById(Long id);
     public List<Correo> getAllCorreos();
+    public void updateCorreo(Correo correo);
 }

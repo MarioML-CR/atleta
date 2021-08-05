@@ -9,4 +9,5 @@ public interface TelefonoService {
     public void saveTelefono(Telefono telefono);
     public Optional<Telefono> getTelefonoById(Long id);
     public List<Telefono> getAllTelefonos();
+    public void updateTelefono(Telefono telefono);
 }

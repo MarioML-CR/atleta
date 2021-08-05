@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+<!--    <link rel="stylesheet" media="all" th:href="@{../static/style.css}" />-->
+    <title>Atletas</title>
+</head>
+<body>
+    <div>
+        <a href="/">Home</a>
+    </div>
+    <table style="width: 90%">
+        <tr>
+            <th>#</th>
+            <th>primer nombre</th>
+            <th>segundo nombre</th>
+            <th>primer apellido</th>
+            <th>segundo apellido</th>
+            <th>sexo</th>
+            <th>fecha nacimiento</th>
+            <th>Opción</th>
+        </tr>
+        <tr th:each="atleta, custStat: ${atletas}">
+            <td th:text="${custStat.count}"></td>
+            <td th:text="${atleta.primerNombre}"></td>
+            <td th:text="${atleta.segundoNombre}"></td>
+            <td th:text="${atleta.primerApellido}"></td>
+            <td th:text="${atleta.segundoApellido}"></td>
+            <td th:text="${atleta.sexo}"></td>
+            <td th:text="${atleta.fechaNacimiento}"></td>
+            <td > <a th:href="@{/cargarDetalle/{id}(id = ${atleta.idAtleta})}">Ver Detalle</a> </td>
+        </tr>
+    </table>
+</body>
+</html>
