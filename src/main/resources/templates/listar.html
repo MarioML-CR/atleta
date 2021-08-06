@@ -22,7 +22,8 @@
             <th>segundo apellido</th>
             <th>sexo</th>
             <th>fecha nacimiento</th>
-            <th>detalle</th>
+            <th>detalle general</th>
+            <th>histórico IMC</th>
         </tr>
         <tr style="height: 1.5rem" th:each="atleta, custStat: ${atletas}">
             <td th:text="${custStat.count}"></td>
@@ -33,6 +34,7 @@
             <td th:text="${atleta.sexo}"></td>
             <td th:text="${atleta.fechaNacimiento}"></td>
             <td > <a th:href="@{/cargarDetalle/{id}(id = ${atleta.idAtleta})}">Ver Detalle</a> </td>
+            <td > <a th:href="@{/historicoIMC/{id}(id = ${atleta.idAtleta})}">Ver histórico</a> </td>
         </tr>
     </table>
 </body>

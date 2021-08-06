@@ -13,8 +13,6 @@ public class Correo {
     @JoinColumn(nullable = false)
     private Atleta atleta;
 
-//    public Correo() {
-//    }
 
     public long getIdCorreo() {
         return idCorreo;

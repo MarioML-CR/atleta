@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -45,14 +43,25 @@ public class AtletaController {
     @RequestMapping(value = "/insertarAtleta", method = RequestMethod.GET)
     public String insertarPage(Model model) {
         model.addAttribute(new Atleta());
-        return "insertarAtleta";
+        return "agregarAtleta";
     }
+
     @RequestMapping(value = "/insertarAtleta", method = RequestMethod.POST)
     public String insertarAction(Atleta atleta, BindingResult result, Model model) {
         atletaService.saveAtleta(atleta);
         return "index";
     }
 
+    @RequestMapping("/historicoIMC/{id}")
+    public String cargarHistoricoIMC(Model model, @PathVariable long id) {
+        Optional<Atleta> result = atletaService.getAtletaById(id);
+        if (result.isPresent()) {
+            model.addAttribute("atleta", result.get());
+            model.addAttribute("imc", result.get().getIndicesMasaMuscular());
+            return "historicoIMC";
+        }
+        return "noFound";
+    }
     @RequestMapping("/listarAtleta")
     public String listar(Model model) {
         logger.info("atletas", atletaService.getAllAtletas());

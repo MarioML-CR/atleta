@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--  <meta http-equiv="Content-Type" content="text/html"></meta>-->
+    <title>Histórico IMC</title>
+</head>
+<body>
+    <div>
+        <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
+    </div>
+    <div style="text-align: center">
+        <div style="text-align: center; border: black; font-size: 25px; height: 3rem">
+            Índice de masa muscular histórico del atleta
+            <span th:text="${atleta.primerNombre}"></span>
+            &nbsp;
+            <span th:text="${atleta.primerApellido}"></span>
+        </div>
+    </div>
+    <div>
+        <table style="width: 100%">
+            <tr style="background-color: tan">
+                <th>consecutivo</th>
+                <th>id</th>
+                <th>peso</th>
+                <th>estatura</th>
+                <th>IMC</th>
+                <th>fecha de cálculo</th>
+            </tr>
+            <tr th:each="imc, custStat: ${atleta.indicesMasaMuscular}">
+                <td th:text="${custStat.count}"></td>
+                <td th:text="${imc.idIMC}"></td>
+                <td th:text="${imc.peso}"></td>
+                <td th:text="${imc.estatura}"></td>
+                <td th:text="${imc.getIMC()}"></td>
+                <td th:text="${imc.fechaCalculo}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
