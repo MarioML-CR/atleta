@@ -6,81 +6,95 @@
     <title>Detalle</title>
 </head>
 <body>
-<div>
-    <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
+<div style="display: flex">
+    <div style="width: 50%">
+        <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
+    </div>
+    <div style="width: 50%">
+        <a style="font-size: 3rem; height: 3rem;" href="/listar">Listar resumen detalle</a>
+    </div>
 </div>
-    <form style="width: 90%">
+
+    <form style="width: 100%">
 <!--        Datos generales-->
         <div style="text-align: center; border: black; font-size: 22px; height: 2rem">
             Dato generales del atleta
         </div>
-        <div style="display: flex">
-            <div style="width: 16%">
-                <div>primer nombre</div>
-                <div th:text="${atleta.primerNombre}"></div>
-            </div>
-            <div style="width: 16%">
-                <div>segundo nombre</div>
-                <div th:text="${atleta.segundoNombre}"></div>
-            </div>
-            <div style="width: 16%">
-                <div>primer apellido</div>
-                <div th:text="${atleta.primerApellido}"></div>
-            </div>
-            <div style="width: 16%">
-                <div>segundo apellido</div>
-                <div th:text="${atleta.segundoApellido}"></div>
-            </div>
-            <div style="width: 18%">
-                <div>sexo</div>
-                <div th:text="${atleta.sexo}"></div>
-            </div>
-            <div style="width: 18%">
-                <div>fecha de nacimiento</div>
-                <div th:text="${atleta.fechaNacimiento}"></div>
-            </div>
-            </div>
-        </div>
+        <table style="width: 100%">
+            <tr style="background-color: tan; height: 2rem">
+                <th>primer nombre</th>
+                <th>segundo nombre</th>
+                <th>primer apellido</th>
+                <th>segundo apellido</th>
+                <th>sexo</th>
+                <th>fecha nacimiento</th>
+            </tr>
+            <tr style="height: 1.5rem">
+                <td th:text="${atleta.primerNombre}"></td>
+                <td th:text="${atleta.segundoNombre}"></td>
+                <td th:text="${atleta.primerApellido}"></td>
+                <td th:text="${atleta.segundoApellido}"></td>
+                <td th:text="${atleta.sexo}"></td>
+                <td th:text="${atleta.fechaNacimiento}"></td>
+            </tr>
+        </table>
 <!--        Correos, teléfonos y deportes-->
         <div style="display: flex">
 <!--            Detalle correos-->
             <div style="width: 34%; border: 1px solid gray">
-                <div style="background-color: gray">correo</div>
-                <div style="display: flex" th:each="correo: ${atleta.correos}">
-                    <div style="width: 60%">
-                        <span th:text="${correo.mail}" >correo</span>
-                    </div>
-                    <div style="width: 40%">
-                        <a th:href="@{/updateCorreo/{id}(id = ${correo.idCorreo})}">Actualizar</a>
-                    </div>
-                </div>
+                <div style="text-align: center; font-size: 22px; height: 2rem">correos</div>
+                <table style="width: 100%">
+                    <tr style="background-color: tan; height: 2rem">
+                        <th>consecutivo</th>
+                        <th>correo</th>
+                        <th>acción</th>
+                    </tr>
+                    <tr style="height: 1.5rem" th:each="correo, custStat: ${atleta.correos}">
+                        <td th:text="${custStat.count}"></td>
+                        <td th:text="${correo.mail}"></td>
+                        <td>
+                            <a th:href="@{/updateCorreo/{id}(id = ${correo.idCorreo})}">Actualizar</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
 <!--            Detalle telefonos-->
             <div style="width: 33%; border: 1px solid gray">
-                <div style="background-color: gray">teléfono</div>
-                <div style="display: flex" th:each="telefono: ${atleta.telefonos}">
-                    <div style="width: 60%">
-                        <span th:text="${telefono.numero}" >teléfono</span>
-                    </div>
-                    <div style="width: 40%">
-                        <a th:href="@{/updateTelefono/{id}(id = ${telefono.idTelefono})}">Actualizar</a>
-                    </div>
-                </div>
+                <div style="text-align: center; font-size: 22px; height: 2rem">teléfono</div>
+                <table style="width: 100%">
+                    <tr style="background-color: tan; height: 2rem">
+                        <th>consecutivo</th>
+                        <th>número</th>
+                        <th>acción</th>
+                    </tr>
+                    <tr style="height: 1.5rem" th:each="telefono, custStat: ${atleta.telefonos}">
+                        <td th:text="${custStat.count}"></td>
+                        <td th:text="${telefono.numero}"></td>
+                        <td>
+                            <a th:href="@{/updateTelefono/{id}(id = ${telefono.idTelefono})}">Actualizar</a>
+                        </td>
+                    </tr>
+                </table>
             </div>
 <!--            Detalle deportes-->
             <div style="width: 33%; border: 1px solid gray">
-                <div style="background-color: gray">deporte</div>
-                <div th:each="deporte: ${atleta.deportes}">
-                    <div>
-                        <span th:text="${deporte.nombreDeporte}" >deporte</span>
-                    </div>
-                </div>
+                <div style="text-align: center; font-size: 22px; height: 2rem">deporte</div>
+                <table style="width: 100%">
+                    <tr style="background-color: tan; height: 2rem">
+                        <th>consecutivo</th>
+                        <th>número</th>
+                    </tr>
+                    <tr style="height: 1.5rem" th:each="deporte, custStat: ${atleta.deportes}">
+                        <td th:text="${custStat.count}"></td>
+                        <td th:text="${deporte.nombreDeporte}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
 <!--        Direcciones-->
         <div>
-            <div style="text-align: center; border: black; background-color: gray">Dirección</div>
-            <table style="width: 100%">
+            <div style="text-align: center; font-size: 22px; height: 2rem">Dirección</div>
+            <table style="width: 100%; ">
                 <tr style="background-color: tan">
                     <th>consecutivo</th>
                     <th>provincia</th>
@@ -103,7 +117,7 @@
         </div>
 <!--        Indice de masa muscular-->
         <div>
-            <div style="text-align: center; border: black; background-color: gray">Indice de masa muscular</div>
+            <div style="text-align: center; font-size: 22px; height: 2rem">Indice de masa muscular</div>
             <table style="width: 100%">
                 <tr style="background-color: tan">
                     <th>consecutivo</th>

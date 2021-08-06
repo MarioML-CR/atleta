@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html"></meta>
+  <title>Atletas</title>
+</head>
+<body>
+<div>
+  <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
+</div>
+<div >
+  <div style="text-align: center; border: black; font-size: 22px; height: 2rem">
+    Lista de atletas
+  </div>
+  <div style="text-align: center; border: black; font-size: 22px; height: 2rem">
+    Dato generales del atleta
+  </div>
+  <div th:each="atleta: ${atletas}">
+    <div style="width: 100%">
+      <table style="width: 100%">
+        <tr style="background-color: tan; height: 2rem">
+          <th>id</th>
+          <th>primer nombre</th>
+          <th>segundo nombre</th>
+          <th>primer apellido</th>
+          <th>segundo apellido</th>
+          <th>sexo</th>
+          <th>fecha nacimiento</th>
+        </tr>
+        <tr style="height: 1.5rem">
+          <td th:text="${atleta.idAtleta}"></td>
+          <td th:text="${atleta.primerNombre}"></td>
+          <td th:text="${atleta.segundoNombre}"></td>
+          <td th:text="${atleta.primerApellido}"></td>
+          <td th:text="${atleta.segundoApellido}"></td>
+          <td th:text="${atleta.sexo}"></td>
+          <td th:text="${atleta.fechaNacimiento}"></td>
+        </tr>
+      </table>
+    </div>
+    <div style="display: flex; flex-direction: row; width: 100%; height: 2rem">
+      <div style="width: 33%; height: 2rem">
+        <div style="width: 100%; text-align: center; height: 2rem">
+          <a style="text-align: center; font-size: 18px" th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>
+        </div>
+        <div style="width: 100%" >
+          <table style="width: 100%">
+            <tr style="background-color: tan; height: 2rem">
+              <th>id</th>
+              <th>correo</th>
+            </tr>
+            <tr style="height: 1.5rem" th:each="correo: ${atleta.correos}">
+              <td th:text="${correo.idCorreo}"></td>
+              <td th:text="${correo.mail}"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div style="width: 33%; height: 2rem">
+        <div style="width: 100%; text-align: center; height: 2rem">
+          <a style="text-align: center; font-size: 18px" th:href="@{/agregarTelefono/{id}(id = ${atleta.idAtleta})}">Agregar teléfono</a>
+        </div>
+        <div style="width: 100%" >
+          <table style="width: 100%">
+            <tr style="background-color: tan; height: 2rem">
+              <th>id</th>
+              <th>número</th>
+            </tr>
+            <tr style="height: 1.5rem" th:each="telefono: ${atleta.telefonos}">
+              <td th:text="${telefono.idTelefono}"></td>
+              <td th:text="${telefono.numero}"></td>
+            </tr>
+          </table>
+          <!--                    <span th:text="${telefono.numero}" >teléfono</span>-->
+        </div>
+      </div>
+      <div style="width: 34%; height: 2rem">
+        <div style="width: 100%; text-align: center; height: 2rem">
+          <a style="text-align: center; font-size: 18px" th:href="@{/agregarDeporte/{id}(id = ${atleta.idAtleta})}">Agregar deporte</a>
+        </div>
+        <div style="width: 100%" >
+          <table style="width: 100%">
+            <tr style="background-color: tan; height: 2rem">
+              <th>id</th>
+              <th>deporte</th>
+            </tr>
+            <tr style="height: 1.5rem" th:each="deporte: ${atleta.deportes}">
+              <td th:text="${deporte.idDeporte}"></td>
+              <td th:text="${deporte.nombreDeporte}"></td>
+            </tr>
+          </table>
+          <!--                    <span th:text="${deporte.nombreDeporte}" >deporte</span>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--    <ul>-->
+  <!--        <div th:each="atleta: ${atletas}">-->
+  <!--            <li>-->
+  <!--                <div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.primerNombre}">primer nombre</span>-->
+  <!--                    </div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.segundoNombre}">segundo nombre</span>-->
+  <!--                    </div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.primerApellido}">primer apellido</span>-->
+  <!--                    </div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.segundoApellido}">segundo apellido</span>-->
+  <!--                    </div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.fechaNacimiento}">fecha de nacimiento</span>-->
+  <!--                    </div>-->
+  <!--                    <div>-->
+  <!--                        <span th:text="${atleta.sexo}">sexo</span>-->
+  <!--                    </div>-->
+  <!--                </div>-->
+  <!--                <div>-->
+  <!--                    <div>-->
+  <!--                        Cantidad de direcciones de correo:-->
+  <!--                        <span th:text="${atleta.correos.size()}">0</span>-->
+  <!--                        <a th:href="@{/agregarCorreo/{id}(id = ${atleta.idAtleta})}">Agregar correo</a>-->
+  <!--                    </div>-->
+  <!--                    <div th:each="correo: ${atleta.correos}">-->
+  <!--                        <span th:text="${correo.mail}" >correo</span>-->
+  <!--                    </div>-->
+  <!--                </div>-->
+  <!--                <div>-->
+  <!--                    <div>-->
+  <!--                        Cantidad de números de teléfonos:-->
+  <!--                        <span th:text="${atleta.telefonos.size()}">0</span>-->
+  <!--                        <a th:href="@{/agregarTelefono/{id}(id = ${atleta.idAtleta})}">Agregar teléfono</a>-->
+  <!--                    </div>-->
+  <!--                    <div th:each="telefono: ${atleta.telefonos}">-->
+  <!--                        <span th:text="${telefono.numero}" >teléfono</span>-->
+  <!--                    </div>-->
+  <!--
+</div>
+<div>
+  <div>
+      Cantidad de cálculos del índice de masa muscular:
+      <span th:text="${atleta.indicesMasaMuscular.size()}">0</span>
+      <a th:href="@{/agregarIMC/{id}(id = ${atleta.idAtleta})}">Agregar IMC</a>
+  </div>
+  <div th:each="imc: ${atleta.indicesMasaMuscular}">
+      <div>
+          <span th:text="${imc.estatura}" >estatura</span>
+      </div>
+      <div>
+          <span th:text="${imc.peso}" >peso</span>
+      </div>
+      <div>
+          <span th:text="${imc.IMC}" >IMC</span>
+      </div>
+      <div>
+          <span th:text="${imc.fechaCalculo}" >fecha</span>
+      </div>
+
+  </div>
+</div>
+</div>-->
+  <!--                <div>-->
+  <!--                    <div>-->
+  <!--                        Cantidad de deportes:-->
+  <!--                        <span th:text="${atleta.deportes.size()}">0</span>-->
+  <!--                        <a th:href="@{/agregarDeporte/{id}(id = ${atleta.idAtleta})}">Agregar deporte</a>-->
+  <!--                    </div>-->
+  <!--                    <div th:each="deporte: ${atleta.deportes}">-->
+  <!--                        <div>-->
+  <!--                            <span th:text="${deporte.nombreDeporte}" >deporte</span>-->
+  <!--                        </div>-->
+  <!--                    </div>-->
+  <!--                </div>-->
+  <!--
+              <div>
+                  <div>
+                      Cantidad de direcciones:
+                      <span th:text="${atleta.direcciones.size()}">0</span>
+                      <a th:href="@{/agregarDireccion/{id}(id = ${atleta.idAtleta})}">Agregar dirección</a>
+                  </div>
+                  <div th:each="adress: ${atleta.direcciones}">
+                      <div>
+                          <span th:text="${adress.provincia}" >provincia</span>
+                      </div>
+                      <div>
+                          <span th:text="${adress.canton}" >cantón</span>
+                      </div>
+                      <div>
+                          <span th:text="${adress.distrito}" >distrito</span>
+                      </div>
+                      <div>
+                          <span th:text="${adress.directionExacta}" >dirección exacta</span>
+                      </div>
+
+                  </div>
+              </div>
+              </div>-->
+  <!--            </li>-->
+  <!--        </div>-->
+  <!--    </ul>-->
+</div>
+
+</body>
+</html>

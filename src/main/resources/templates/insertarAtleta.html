@@ -6,38 +6,70 @@
   <title>Atletas</title>
 </head>
 <body>
-<div>
-  <a href="/">Home</a>
-</div>
-<div>
-  Insertar:
-  <form action="#" th:action="@{/insertarAtleta}" th:object="${atleta}" method="post">
-    <div>
-      <label for="primer_nombre">primer nombre</label>
-      <input type="text" th:field="*{primerNombre}" id="primer_nombre">
+  <div>
+    <a style="height: 3rem; font-size: 3rem" href="/">Home</a>
+  </div>
+  <div>
+    <div style="text-align: center; border: black; background-color: gray; font-size: 22px; height: 2rem">
+      Agregar atletas
     </div>
-    <div>
-      <label for="segundo_nombre">segundo nombre</label>
-      <input type="text" th:field="*{segundoNombre}" id="segundo_nombre">
-    </div>
-    <div>
-      <label for="primer_apellido">primer apellido</label>
-      <input type="text" th:field="*{primerApellido}" id="primer_apellido">
-    </div>
-    <div>
-      <label for="segundo_apellido">segundo apellido</label>
-      <input type="text" th:field="*{segundoApellido}" id="segundo_apellido">
-    </div>
-    <div>
-      <label for="fecha_nacimiento">fecha de nacimiento</label>
-      <input type="text" th:field="*{fechaNacimiento}" id="fecha_nacimiento">
-    </div>
-    <div>
-      <label for="sex">sexo</label>
-      <input type="text" th:field="*{sexo}" id="sex">
-    </div>
-    <input type="submit" value="Agregar Atleta">
-  </form>
-</div>
+    <form style="height: 2rem; font-size: 22px" action="#" th:action="@{/insertarAtleta}" th:object="${atleta}" method="post">
+      <div style="display: flex; padding-top: 20px">
+        <div style="width: 33%; height: 2rem; display: flex">
+          <div style="width: 40%; height: 2rem">
+            <label for="primer_nombre">primer nombre</label>
+          </div>
+          <div style="width: 60%">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{primerNombre}" id="primer_nombre">
+          </div>
+        </div>
+        <div style="width: 33%; height: 2rem; display: flex">
+          <div style="width: 40%; height: 2rem">
+            <label for="segundo_nombre">segundo nombre</label>
+          </div>
+          <div style="width: 60%">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{segundoNombre}" id="segundo_nombre">
+          </div>
+        </div>
+        <div style="width: 34%; height: 2rem; display: flex">
+          <div style="width: 40%; height: 2rem">
+            <label for="primer_apellido">primer apellido</label>
+          </div>
+          <div style="width: 60%; height: 2rem">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{primerApellido}" id="primer_apellido">
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; height: 2rem; padding-top: 20px">
+        <div style="width: 33%; display: flex; height: 2rem">
+          <div style="width: 40%; height: 2rem">
+            <label for="segundo_apellido">segundo apellido</label>
+          </div>
+          <div style="width: 60%; height: 2rem">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{segundoApellido}" id="segundo_apellido">
+          </div>
+        </div>
+        <div style="width: 33%; display: flex; height: 2rem">
+          <div style="width: 40%; height: 2rem">
+            <label for="fecha_nacimiento">fecha de nacimiento</label>
+          </div>
+          <div style="width: 60%; height: 2rem">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{fechaNacimiento}" id="fecha_nacimiento">
+          </div>
+        </div>
+        <div style="width: 34%; height: 2rem; display: flex">
+          <div style="width: 40%; height: 2rem">
+            <label for="sex">sexo</label>
+          </div>
+          <div style="width: 60%; height: 2rem">
+            <input style="width: 90%; height: 2rem" type="text" th:field="*{sexo}" id="sex">
+          </div>
+        </div>
+      </div>
+      <div style="padding-top: 20px">
+        <input style="width: 20%; height: 2rem" type="submit" value="Agregar Atleta">
+      </div>
+    </form>
+  </div>
 </body>
 </html>
